@@ -6,7 +6,7 @@ function Remove-EloomiGroupManager
     .DESCRIPTION
         Remove a group maanger in Eloomi using the API.
     .EXAMPLE
-        Remove-EloomiGroup -ApiKey "<secret>" -GroupId 1 -ManagerId 1;
+        Remove-EloomiGroupManager -ApiKey "<secret>" -Id 1;
     #>
     [cmdletbinding()]
     [OutputType([object])]
@@ -17,17 +17,11 @@ function Remove-EloomiGroupManager
         [ValidateNotNullOrEmpty()]
         [string]$ApiKey = (Get-EloomiApiKey),
 
-        # Elooomi group ID.
+        # Elooomi group manager ID.
         [Parameter(Mandatory = $true, Position = 1, ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
         [ValidateRange(1, 2147483647)]
-        [int]$GroupId,
-
-        # Elooomi manager ID.
-        [Parameter(Mandatory = $true, Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [ValidateNotNullOrEmpty()]
-        [ValidateRange(1, 2147483647)]
-        [int]$ManagerId
+        [int]$Id
     )
 
     BEGIN
@@ -36,7 +30,7 @@ function Remove-EloomiGroupManager
         $customProgress = Write-CustomProgress -Activity $MyInvocation.MyCommand.Name -CurrentOperation 'Removing Eloomi group manager';
 
         # API URI.
-        $uri = 'https://api.eloomi.io/public/v1/user-groups/managers/{0}' -f $ManagerId;
+        $uri = 'https://api.eloomi.io/public/v1/user-groups/managers/{0}' -f $Id;
 
         # Parameters.
         $paramSplatting = @{
@@ -44,25 +38,17 @@ function Remove-EloomiGroupManager
             'Uri'    = $uri;
             'Method' = 'DELETE';
         };
-
-        # Create body.
-        $body = @{
-            'id' = $GroupId;
-        };
-
-        # Add body to parameters.
-        $paramSplatting.Add('Body', $body);
     }
     PROCESS
     {
         # Write to log.
-        Write-CustomLog -Message ('Trying to remove Eloomi manager ID {0} from group with ID {1} as manager' -f $ManagerId, $GroupId) -Level 'Verbose';
+        Write-CustomLog -Message ('Trying to remove Eloomi manager ID {0}' -f $Id) -Level 'Verbose';
 
         # Invoke Eloomi API.
         $response = Invoke-EloomiApi @paramSplatting;
 
         # Write to log.
-        Write-CustomLog -Message ('Successfully removed Eloomi manager ID {0} from group with ID {1} as manager' -f $ManagerId, $GroupId) -Level 'Verbose';
+        Write-CustomLog -Message ('Successfully removed Eloomi manager ID {0}' -f $Id) -Level 'Verbose';
     }
     END
     {
