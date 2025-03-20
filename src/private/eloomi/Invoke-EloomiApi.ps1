@@ -72,7 +72,7 @@ function Invoke-EloomiApi
 
         # Create header.
         $header = @{
-            'Content-Type' = 'application/json';
+            'Content-Type' = 'application/json; charset=utf8';
             'apiKey'       = $ApiKey;
         };
 
@@ -120,7 +120,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $invokeUri -Headers $header -Method Get -ContentType 'application/json' -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $invokeUri -Headers $header -Method Get -ContentType 'application/json; charset=utf8' -ErrorAction Stop;
                 }
                 # Something went wrong.
                 catch
