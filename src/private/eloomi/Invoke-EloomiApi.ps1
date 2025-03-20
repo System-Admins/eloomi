@@ -72,7 +72,7 @@ function Invoke-EloomiApi
 
         # Create header.
         $header = @{
-            'Content-Type' = 'application/json';
+            'Content-Type' = 'application/json; charset=utf8';
             'apiKey'       = $ApiKey;
         };
 
@@ -120,7 +120,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $invokeUri -Headers $header -Method Get -ContentType 'application/json' -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $invokeUri -Headers $header -Method Get -ContentType 'application/json; charset=utf8' -ErrorAction Stop;
                 }
                 # Something went wrong.
                 catch
@@ -229,7 +229,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Post -ContentType 'application/json' -Body ($Body | ConvertTo-Json) -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Post -ContentType 'application/json; charset=utf8' -Body ($Body | ConvertTo-Json) -ErrorAction Stop;
                 }
                 catch
                 {
@@ -296,7 +296,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Patch -ContentType 'application/json' -Body ($Body | ConvertTo-Json) -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Patch -ContentType 'application/json; charset=utf8' -Body ($Body | ConvertTo-Json) -ErrorAction Stop;
                 }
                 catch
                 {
@@ -359,7 +359,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Delete -ContentType 'application/json' -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Delete -ContentType 'application/json; charset=utf8' -ErrorAction Stop;
                 }
                 catch
                 {
