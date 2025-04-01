@@ -225,11 +225,17 @@ function Invoke-EloomiApi
                 Write-CustomLog -Message ('Body:') -Level 'Verbose';
                 Write-CustomLog -Message ($Body | ConvertTo-Json) -Level 'Verbose';
 
+                # Convert to JSON.
+                $json = ($Body | ConvertTo-Json);
+
+                # Fix UTF-8 issue.
+                $bodyUtf8 = [System.Text.Encoding]::UTF8.GetBytes($json);
+
                 # Try
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Post -ContentType 'application/json' -Body ($Body | ConvertTo-Json) -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Post -ContentType 'application/json' -Body $bodyUtf8 -ErrorAction Stop;
                 }
                 catch
                 {
@@ -292,11 +298,17 @@ function Invoke-EloomiApi
                 Write-CustomLog -Message ('Body:') -Level 'Verbose';
                 Write-CustomLog -Message ($Body | ConvertTo-Json) -Level 'Verbose';
 
+                # Convert to JSON.
+                $json = ($Body | ConvertTo-Json);
+
+                # Fix UTF-8 issue.
+                $bodyUtf8 = [System.Text.Encoding]::UTF8.GetBytes($json);
+
                 # Try
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Patch -ContentType 'application/json' -Body ($Body | ConvertTo-Json) -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Patch -ContentType 'application/json' -Body $bodyUtf8 -ErrorAction Stop;
                 }
                 catch
                 {
