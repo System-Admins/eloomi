@@ -235,7 +235,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Post -ContentType 'application/json' -Body $bodyUtf8 -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Post -ContentType 'application/json' -Body $bodyUtf8 -UseBasicParsing:$true -ErrorAction Stop;
                 }
                 catch
                 {
@@ -308,7 +308,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Patch -ContentType 'application/json' -Body $bodyUtf8 -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Patch -ContentType 'application/json' -Body $bodyUtf8 -UseBasicParsing:$true -ErrorAction Stop;
                 }
                 catch
                 {
@@ -371,7 +371,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Delete -ContentType 'application/json' -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $Uri -Headers $header -Method Delete -ContentType 'application/json' -UseBasicParsing:$true -ErrorAction Stop;
                 }
                 catch
                 {
