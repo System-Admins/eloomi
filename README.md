@@ -8,7 +8,6 @@ Welcome to the Eloomi PowerShell (SystemAdmins.Eloomi) module!
   - [Installation](#electric_plug-installation)
   - [Commands](#package-commands)
   - [Cmdlets](#cmdlets)
-    - [Send-EntraUserMfaStatusReport](#Send-EntraUserMfaStatusReport)
 - [FAQ](#question-faq)
 
 ##  :beginner: About
