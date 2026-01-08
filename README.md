@@ -14,7 +14,7 @@ Welcome to the Eloomi PowerShell (SystemAdmins.Eloomi) module!
 ##  :beginner: About
 This PowerShell module is a wrapper for the Eloomi API v1 (https://api.eloomi.io).
 Currently it only provides interaction with field, groups and users.
-At a later point (if needed) courses, playlists, events, categories and topics will be added.
+At a later point (if needed) courses, playlists, events, categories and topics will be added (if requested).
 
 ## :zap: Usage
 To get started with the Eloomi PowerShell module, simply follow the instructions outlined in the documentation provided in this repository. You'll find detailed guidance on installation, configuration, and usage, enabling you to seamlessly integrate the module into your existing workflows.

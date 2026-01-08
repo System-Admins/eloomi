@@ -120,7 +120,7 @@ function Invoke-EloomiApi
                 try
                 {
                     # Invoke Eloomi API.
-                    $response = Invoke-WebRequest -Uri $invokeUri -Headers $header -Method Get -ContentType 'application/json' -ErrorAction Stop;
+                    $response = Invoke-WebRequest -Uri $invokeUri -Headers $header -Method Get -ContentType 'application/json' -UseBasicParsing:$true -ErrorAction Stop;
                 }
                 # Something went wrong.
                 catch
